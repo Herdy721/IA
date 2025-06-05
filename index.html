@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado do teste.py</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <script>
+        async function runPython() {
+            let pyodide = await loadPyodide();
+            let code = await (await fetch('teste.py')).text();
+            let result = await pyodide.runPythonAsync(code);
+            document.getElementById('output').textContent = result;
+        }
+        window.addEventListener('load', runPython);
+    </script>
+</head>
+<body>
+    <h1>Resultado da execução de teste.py</h1>
+    <pre id="output">Executando...</pre>
+</body>
+</html>
